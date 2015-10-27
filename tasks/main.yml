@@ -1,0 +1,13 @@
+---
+- name: download solr...
+  environment: proxy_env
+  get_url: url='{{ solr_url }}' dest='/tmp/{{ solr_archive }}'
+
+- name: unarchive solr...
+  unarchive: copy=no src='/tmp/{{ solr_archive }}' dest='/opt'
+
+- name: link solr...
+  file: src='/opt/{{ solr_name }}' dest='/opt/solr' state=link
+
+- name: include solr in the default path...
+  copy: src='etc/profile.d/solr.sh' dest='/etc/profile.d/solr.sh' mode=644
