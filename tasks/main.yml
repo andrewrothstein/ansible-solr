@@ -10,4 +10,9 @@
   file: src='/opt/{{ solr_name }}' dest='/opt/solr' state=link
 
 - name: include solr in the default path...
-  copy: src='etc/profile.d/solr.sh' dest='/etc/profile.d/solr.sh' mode=644
+  copy: >
+    src=etc/profile.d/solr.sh
+    dest=/etc/profile.d/solr.sh
+    group=root
+    owner=root
+    mode=644

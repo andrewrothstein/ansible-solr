@@ -1,6 +1,5 @@
 ---
-solr_version : '5.2.1'
 solr_name : 'solr-{{ solr_version }}'
 solr_archive : '{{ solr_name }}.tgz'
-solr_url : 'http://mirror.cc.columbia.edu/pub/software/apache/lucene/solr/{{ solr_version }}/{{ solr_archive }}'
+solr_url : '{{solr_mirror}}/{{ solr_version }}/{{ solr_archive }}'
   
