@@ -1,13 +1,26 @@
 ---
 - name: download solr...
-  environment: proxy_env
-  get_url: url='{{ solr_url }}' dest='/tmp/{{ solr_archive }}'
+  get_url: >
+    url={{solr_url}}
+    dest=/tmp/{{solr_archive}}
+    owner=root
+    group=root
+    mode=0644
 
 - name: unarchive solr...
-  unarchive: copy=no src='/tmp/{{ solr_archive }}' dest='/opt'
+  unarchive: >
+    copy=no
+    src=/tmp/{{solr_archive}}
+    dest=/opt
+    creates=/opt/{{solr_name}}
 
 - name: link solr...
-  file: src='/opt/{{ solr_name }}' dest='/opt/solr' state=link
+  file: >
+    src=/opt/{{solr_name}}
+    dest=/opt/solr
+    state=link
+    owner=root
+    group=root
 
 - name: include solr in the default path...
   copy: >
