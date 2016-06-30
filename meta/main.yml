@@ -14,7 +14,7 @@ galaxy_info:
       versions:
         - 23
 
-  categories:
+  galaxy_tags:
     - development
 
 dependencies: []
