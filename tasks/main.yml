@@ -1,31 +1,35 @@
 ---
 - name: download solr...
+  become: yes
+  become_user: root
   get_url: >
     url={{solr_url}}
     dest=/tmp/{{solr_archive}}
-    owner=root
-    group=root
     mode=0644
 
 - name: unarchive solr...
+  become: yes
+  become_user: root
   unarchive: >
     copy=no
     src=/tmp/{{solr_archive}}
-    dest=/opt
-    creates=/opt/{{solr_name}}
+    dest={{solr_parent_homedir}}
+    creates={{solr_parent_homedir}}/{{solr_name}}
 
 - name: link solr...
+  become: yes
+  become_user: root
   file: >
-    src=/opt/{{solr_name}}
-    dest=/opt/solr
+    src={{solr_parent_homedir}}/{{solr_name}}
+    dest={{solr_parent_homedir}}/solr
     state=link
-    owner=root
-    group=root
 
 - name: include solr in the default path...
+  become: yes
+  become_user: root
+  with_items:
+    - etc/profile.d/solr.sh
   copy: >
-    src=etc/profile.d/solr.sh
-    dest=/etc/profile.d/solr.sh
-    group=root
-    owner=root
-    mode=644
+    src={{item}}
+    dest=/{{item}}
+    mode=0644
