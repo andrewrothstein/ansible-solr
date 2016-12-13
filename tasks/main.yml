@@ -1,5 +1,5 @@
 ---
-- name: download solr...
+- name: download...
   become: yes
   become_user: root
   get_url: >
@@ -7,7 +7,7 @@
     dest=/tmp/{{solr_archive}}
     mode=0644
 
-- name: unarchive solr...
+- name: unarchive...
   become: yes
   become_user: root
   unarchive: >
@@ -16,7 +16,7 @@
     dest={{solr_parent_homedir}}
     creates={{solr_parent_homedir}}/{{solr_name}}
 
-- name: link solr...
+- name: link...
   become: yes
   become_user: root
   file: >
@@ -28,8 +28,8 @@
   become: yes
   become_user: root
   with_items:
-    - etc/profile.d/solr.sh
-  copy: >
+    - etc/profile.d/solr.sh.j2
+  template: >
     src={{item}}
     dest=/{{item}}
     mode=0644
