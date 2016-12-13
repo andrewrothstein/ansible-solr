@@ -28,8 +28,8 @@
   become: yes
   become_user: root
   with_items:
-    - etc/profile.d/solr.sh.j2
+    - etc/profile.d/solr.sh
   template: >
-    src={{item}}
+    src={{item}}.j2
     dest=/{{item}}
     mode=0644
