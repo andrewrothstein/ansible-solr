@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: solr role
+  description: installs solr
   company: BlackRock
   license:
     - MIT
@@ -16,7 +16,6 @@ galaxy_info:
     - name: Ubuntu
       version:
         - all
-
   galaxy_tags:
     - solr
     - index

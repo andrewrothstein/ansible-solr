@@ -1,5 +1,5 @@
 ---
-solr_name : 'solr-{{solr_version}}'
+solr_name : solr-{{solr_version}}
 solr_archive : '{{solr_name}}.tgz'
 solr_url : '{{solr_mirror}}/{{solr_version}}/{{solr_archive}}'
   
