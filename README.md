@@ -1,7 +1,7 @@
 andrewrothstein.solr
 ===========================
 
-A role for installing [Apache Solr](http://solr.apache.org/)
+A role for installing [Apache Solr](https://lucene.apache.org/solr/)
 
 Requirements
 ------------
