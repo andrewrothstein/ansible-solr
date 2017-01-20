@@ -5,6 +5,7 @@
   get_url:
     url: '{{solr_url}}'
     dest: /tmp/{{solr_archive}}
+    checksum: '{{solr_checksum}}'
     mode: '0644'
 
 - name: unarchive...
