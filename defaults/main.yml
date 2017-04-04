@@ -1,5 +1,5 @@
 ---
-solr_version : '6.3.0'
-solr_checksum: md5:21667be2e904ba1922bcc66ab870fbb8
+solr_version : '6.5.0'
+solr_checksum: sha256:893835a1d724bda80bc0b9d87893a321f442460937d61d26746cefb52286543c
 solr_mirror : http://mirror.cc.columbia.edu/pub/software/apache/lucene/solr
 solr_parent_homedir: /usr/local
