@@ -12,7 +12,7 @@
   become: yes
   become_user: root
   unarchive:
-    remote_src: no
+    remote_src: yes
     src: /tmp/{{solr_archive}}
     dest: '{{solr_parent_homedir}}'
     creates: '{{solr_parent_homedir}}/{{solr_name}}'
