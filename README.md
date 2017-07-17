@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-solr.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-solr)
 andrewrothstein.solr
-===========================
+====================
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-solr.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-solr)
 
 A role for installing [Apache Solr](https://lucene.apache.org/solr/)
 
