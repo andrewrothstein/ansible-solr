@@ -6,7 +6,7 @@
     url: '{{solr_url}}'
     dest: /tmp/{{solr_archive}}
     checksum: '{{solr_checksum}}'
-    mode: '0644'
+    mode: 0644
 
 - name: unarchive...
   become: yes
@@ -15,22 +15,23 @@
     remote_src: yes
     src: /tmp/{{solr_archive}}
     dest: '{{solr_parent_homedir}}'
-    creates: '{{solr_parent_homedir}}/{{solr_name}}'
+    creates: '{{solr_install_dir}}'
 
 - name: link...
   become: yes
   become_user: root
   file:
-    src: '{{solr_parent_homedir}}/{{solr_name}}'
-    dest: '{{solr_parent_homedir}}/solr'
+    src: '{{solr_install_dir}}'
+    dest: '{{solr_link_dir}}'
     state: link
 
 - name: include solr in the default path...
   become: yes
   become_user: root
   with_items:
-    - etc/profile.d/solr.sh
+    - f: solr.sh
+      d: /etc/profile.d
   template:
-    src: '{{item}}.j2'
-    dest: '/{{item}}'
-    mode: '0644'
+    src: '{{item.f}}.j2'
+    dest: '{{item.d}}/{{item.f}}'
+    mode: '{{item.m|default("0644")}}'
