@@ -1,21 +1,36 @@
 ---
-- name: download...
+- name: check for solr install
   become: yes
-  become_user: root
-  get_url:
-    url: '{{solr_url}}'
-    dest: /tmp/{{solr_archive}}
-    checksum: '{{solr_checksum}}'
-    mode: 0644
+  stat:
+    path: '{{solr_install_dir}}'
+  changed_when: false
+  register: solr_binary
+- when: not solr_binary.stat.exists
+  block:
+    - name: download...
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{solr_url}}'
+        dest: /tmp/{{solr_archive}}
+        checksum: '{{solr_checksum}}'
+        mode: 0644
 
-- name: unarchive...
-  become: yes
-  become_user: root
-  unarchive:
-    remote_src: yes
-    src: /tmp/{{solr_archive}}
-    dest: '{{solr_parent_homedir}}'
-    creates: '{{solr_install_dir}}'
+    - name: unarchive...
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{solr_archive}}
+        dest: '{{solr_parent_homedir}}'
+        creates: '{{solr_install_dir}}'
+  always:
+    - name: cleanup
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{solr_archive}}
+        state: absent
 
 - name: link...
   become: yes

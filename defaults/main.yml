@@ -1,5 +1,8 @@
 ---
-solr_version : '7.0.1'
-solr_checksum: sha256:128239cadfd8cb95ce510ce68881cfbb5f16dc559051477f780e1bc490bb7000
+solr_version : '7.2.0'
+solr_checksums:
+  # http://apache.osuosl.org/lucene/solr/7.0.1/solr-7.0.1.tgz
+  '7.0.1': sha256:128239cadfd8cb95ce510ce68881cfbb5f16dc559051477f780e1bc490bb7000
+  '7.2.0': sha256:1b2cedf176a62c259bfa72db5bf0ba18cc3af255bc8e25187d3b58213535011f
 solr_mirror : http://apache.osuosl.org/lucene/solr
 solr_parent_homedir: /usr/local
