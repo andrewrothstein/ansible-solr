@@ -1,8 +1,8 @@
 ---
-solr_name : solr-{{solr_version}}
-solr_archive : '{{solr_name}}.tgz'
+solr_name: solr-{{solr_version}}
+solr_archive: '{{solr_name}}.tgz'
 
-solr_url : '{{solr_mirror}}/{{solr_version}}/{{solr_archive}}'
+solr_url: '{{solr_mirror}}/{{solr_version}}/{{solr_archive}}'
 solr_checksum: '{{solr_checksums[solr_version]}}'
 
 solr_install_dir: '{{solr_parent_homedir}}/{{solr_name}}'
