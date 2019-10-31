@@ -1,5 +1,9 @@
 ---
-solr_version: '8.2.0'
+solr_version: '8.3.0'
+
+solr_mirror: http://www.apache.org/dist/lucene/solr
+solr_parent_homedir: /usr/local
+
 solr_checksums:
   # http://apache.osuosl.org/lucene/solr/7.0.1/solr-7.0.1.tgz
   '7.0.1': sha256:128239cadfd8cb95ce510ce68881cfbb5f16dc559051477f780e1bc490bb7000
@@ -23,6 +27,5 @@ solr_checksums:
   '8.1.1': sha512:abb669374f06412b7827a0059de5622497f5ceb2a36d4b769a4d3bae88d820703b9b9f6caff110793f69a7f11c73b3cf86b256dad2c06542159efffd54ff20cc
   # https://www.apache.org/dist/lucene/solr/8.2.0/solr-8.2.0.tgz.sha512
   '8.2.0': sha512:beb4e37fc21bf483e3b6bae43cb06a49bc420a0f2b920c97909a69a5efeacba1e7d2ff09ae8018446c87bf007f88f06a59de73cd1923f0967e8206629b0509b6
-
-solr_mirror: http://www.apache.org/dist/lucene/solr
-solr_parent_homedir: /usr/local
+  # https://www.apache.org/dist/lucene/solr/8.3.0/solr-8.3.0.tgz.sha512
+  '8.3.0': sha512:1b55d25c738ba4b606f02f7830d510bfeac7686bd1a5f65ba2fcac72592e2607c05a552295522996c15b5730827c57f4b490e36d79b734681ba2f5d664062a09

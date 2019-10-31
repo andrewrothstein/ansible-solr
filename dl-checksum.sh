@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-VER=8.2.0
+VER=${1:-8.3.0}
 DIR=~/Downloads
 SHASUM=solr-${VER}.tgz.sha512
 URL=https://www.apache.org/dist/lucene/solr/$VER/$SHASUM
