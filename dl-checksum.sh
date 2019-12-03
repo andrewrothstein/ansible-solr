@@ -1,8 +1,14 @@
 #!/usr/bin/env sh
-VER=${1:-8.3.0}
 DIR=~/Downloads
-SHASUM=solr-${VER}.tgz.sha512
-URL=https://www.apache.org/dist/lucene/solr/$VER/$SHASUM
+MIRROR=https://www.apache.org/dist/lucene/solr
 
-printf "  # %s\n" $URL
-printf "  '%s': sha512:%s\n" $VER `curl -sSL $URL | awk '{print $1}'`
+dl_ver() {
+    local ver=$1
+    local shasum=solr-${ver}.tgz.sha512
+    local url=$MIRROR/$ver/$shasum
+
+    printf "  # %s\n" $url
+    printf "  '%s': sha512:%s\n" $ver `curl -sSL $url | awk '{print $1}'`
+}
+
+dl_ver ${1:-8.3.1}
