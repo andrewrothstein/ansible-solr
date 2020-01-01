@@ -1,5 +1,5 @@
 ---
-solr_version: '8.3.1'
+solr_version: '8.4.0'
 
 solr_mirror: http://www.apache.org/dist/lucene/solr
 solr_parent_homedir: /usr/local
@@ -31,3 +31,5 @@ solr_checksums:
   '8.3.0': sha512:1b55d25c738ba4b606f02f7830d510bfeac7686bd1a5f65ba2fcac72592e2607c05a552295522996c15b5730827c57f4b490e36d79b734681ba2f5d664062a09
   # https://www.apache.org/dist/lucene/solr/8.3.1/solr-8.3.1.tgz.sha512
   '8.3.1': sha512:75472c1bceb5813f4af3b8c62a200e3fcfa70b1d30bb801d5f307ffe5280b963841bb47670afb94243d3eb8faf3472514e41a6ea8fba598a6b7f003174457ad4
+  # https://www.apache.org/dist/lucene/solr/8.4.0/solr-8.4.0.tgz.sha512
+  '8.4.0': sha512:37107e5fb3965ffc556b4090ff891cc8473e2b5dc2cdbf0657dffaf8f2bf3923506b1b7261bec97c5ba48bef60cabc2ca910f868b65a695abcfbf72d92327e11
