@@ -1,6 +1,6 @@
 andrewrothstein.solr
 ====================
-[![Build Status](https://travis-ci.org/andrewrothstein/ansible-solr.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-solr)
+![Build Status](https://github.com/andrewrothstein/ansible-solr/actions/workflows/build.yml/badge.svg)
 
 A role for installing [Apache Solr](https://lucene.apache.org/solr/)
 
