@@ -1,6 +1,7 @@
 ---
 solr_name: solr-{{ solr_version }}
 solr_archive: '{{ solr_name }}.tgz'
+solr_tmp_archive: /tmp/{{ solr_archive }}
 
 solr_url: '{{ solr_mirror }}/{{ solr_version }}/{{ solr_archive }}'
 solr_checksum: '{{ solr_checksums[solr_version] }}'

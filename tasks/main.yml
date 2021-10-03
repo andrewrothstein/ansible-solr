@@ -1,5 +1,5 @@
 ---
-- name: check for solr install
+- name: check for install in {{ solr_install_dir }}
   become: yes
   stat:
     path: '{{ solr_install_dir }}'
@@ -7,32 +7,32 @@
   register: solr_binary
 - when: not solr_binary.stat.exists
   block:
-    - name: download...
+    - name: downloading {{ solr_url }}
       become: yes
       become_user: root
       get_url:
         url: '{{ solr_url }}'
-        dest: /tmp/{{ solr_archive }}
+        dest: '{{ solr_tmp_archive }}'
         checksum: '{{ solr_checksum }}'
         mode: 0644
 
-    - name: unarchive...
+    - name: unarchive {{ solr_tmp_archive }} to {{ solr_parent_homedir }}
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ solr_archive }}
+        src: '{{ solr_tmp_archive }}'
         dest: '{{ solr_parent_homedir }}'
         creates: '{{ solr_install_dir }}'
   always:
-    - name: cleanup
+    - name: rm {{ solr_tmp_archive }}
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ solr_archive }}
+        path: '{{ solr_tmp_archive }}'
         state: absent
 
-- name: link...
+- name: linking {{ solr_link_dir }} to {{ solr_install_dir }}
   become: yes
   become_user: root
   file:
@@ -40,7 +40,7 @@
     dest: '{{ solr_link_dir }}'
     state: link
 
-- name: include solr in the default path...
+- name: include solr bin in the default PATH...
   become: yes
   become_user: root
   with_items:
