@@ -1,6 +1,12 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.temurin
+  vars:
+    openjdk_app: jre
 - name: check for install in {{ solr_install_dir }}
-  become: yes
+  become: true
   stat:
     path: '{{ solr_install_dir }}'
   changed_when: false
@@ -8,7 +14,7 @@
 - when: not solr_binary.stat.exists
   block:
     - name: downloading {{ solr_url }}
-      become: yes
+      become: true
       become_user: root
       get_url:
         url: '{{ solr_url }}'
@@ -17,23 +23,23 @@
         mode: 0644
 
     - name: unarchive {{ solr_tmp_archive }} to {{ solr_parent_homedir }}
-      become: yes
+      become: true
       become_user: root
       unarchive:
-        remote_src: yes
+        remote_src: true
         src: '{{ solr_tmp_archive }}'
         dest: '{{ solr_parent_homedir }}'
         creates: '{{ solr_install_dir }}'
   always:
     - name: rm {{ solr_tmp_archive }}
-      become: yes
+      become: true
       become_user: root
       file:
         path: '{{ solr_tmp_archive }}'
         state: absent
 
 - name: linking {{ solr_link_dir }} to {{ solr_install_dir }}
-  become: yes
+  become: true
   become_user: root
   file:
     src: '{{ solr_install_dir }}'
@@ -41,7 +47,7 @@
     state: link
 
 - name: include solr bin in the default PATH...
-  become: yes
+  become: true
   become_user: root
   with_items:
     - f: solr.sh
