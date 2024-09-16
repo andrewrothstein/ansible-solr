@@ -1,58 +1,61 @@
 ---
-- include_role:
-    name: andrewrothstein.unarchive-deps
-- include_role:
+- name: Installing andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
+    name: andrewrothstein.unarchivedeps
+- name: Installing andrewrothstein.temurin
+  ansible.builtin.include_role:
     name: andrewrothstein.temurin
   vars:
-    openjdk_app: jre
-- name: check for install in {{ solr_install_dir }}
+    temurin_app: jre
+- name: Check for install in {{ solr_install_dir }}
   become: true
-  stat:
+  ansible.builtin.stat:
     path: '{{ solr_install_dir }}'
   changed_when: false
   register: solr_binary
-- when: not solr_binary.stat.exists
+- name: Downloading and installing solr
+  when: not solr_binary.stat.exists
   block:
-    - name: downloading {{ solr_url }}
+    - name: Downloading {{ solr_url }}
       become: true
       become_user: root
-      get_url:
+      ansible.builtin.get_url:
         url: '{{ solr_url }}'
         dest: '{{ solr_tmp_archive }}'
         checksum: '{{ solr_checksum }}'
-        mode: 0644
+        mode: '644'
 
-    - name: unarchive {{ solr_tmp_archive }} to {{ solr_parent_homedir }}
+    - name: Unarchiving {{ solr_tmp_archive }} to {{ solr_parent_homedir }}
       become: true
       become_user: root
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: '{{ solr_tmp_archive }}'
         dest: '{{ solr_parent_homedir }}'
         creates: '{{ solr_install_dir }}'
   always:
-    - name: rm {{ solr_tmp_archive }}
+    - name: Rm {{ solr_tmp_archive }}
       become: true
       become_user: root
-      file:
+      ansible.builtin.file:
         path: '{{ solr_tmp_archive }}'
         state: absent
 
-- name: linking {{ solr_link_dir }} to {{ solr_install_dir }}
+- name: Linking {{ solr_link_dir }} to {{ solr_install_dir }}
   become: true
   become_user: root
-  file:
+  ansible.builtin.file:
     src: '{{ solr_install_dir }}'
     dest: '{{ solr_link_dir }}'
     state: link
 
-- name: include solr bin in the default PATH...
+- name: Include solr bin in the default PATH...
   become: true
   become_user: root
   with_items:
     - f: solr.sh
       d: /etc/profile.d
-  template:
+  ansible.builtin.template:
     src: '{{ item.f }}.j2'
     dest: '{{ item.d }}/{{ item.f }}'
-    mode: '{{ item.m|default("0644") }}'
+    mode: '{{ item.m | default("644") }}'

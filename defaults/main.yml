@@ -1,5 +1,5 @@
 ---
-solr_version: 9.1.1
+solr_version: 9.7.0
 
 solr_mirror: https://downloads.apache.org/solr/solr
 solr_parent_homedir: /usr/local
@@ -67,3 +67,5 @@ solr_checksums:
   '8.11.2': sha512:22fedcc0090eda72c3c5a5ea769c93adaf7d92c5c4479993f009ef0b9d42de5bd2ed1e0565ca01f3428587d8a3836286aa3017aab157050f2bd5bc3482fdebaa
   # https://downloads.apache.org/solr/solr/9.1.1/solr-9.1.1.tgz.sha512
   '9.1.1': sha512:59fd47185196fc6b0fad4b6b2ba547d136cc0c688addc9833129086944cc90e185a18c33fd70523edddad1a6ebe7b4cd893be5065c2b01fe21a5026bdb7e5d9f
+  # https://downloads.apache.org/solr/solr/9.7.0/solr-9.7.0.tgz.sha512
+  '9.7.0': sha512:a80417a79c8371d2049868573927c587b4a5b7b37e938ca6e64e8a8842449f49eddc987968ddad5d6b6b1f4395990c1edc4576a884b3a62c4fbcd97091a659d9
