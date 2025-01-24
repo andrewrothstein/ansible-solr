@@ -11,4 +11,4 @@ dl_ver() {
     printf "  '%s': sha512:%s\n" $ver $(curl -sSLf $url | awk '{print $1}')
 }
 
-dl_ver ${1:-9.7.0}
+dl_ver ${1:-9.8.0}
